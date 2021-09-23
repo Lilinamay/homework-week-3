@@ -2,6 +2,7 @@
 .gitconfig
 
 # unity generated folders
+/[Ll]ibrary/
 library/
 temp/
 obj/
