@@ -9,6 +9,14 @@ public class PlayerMove : MonoBehaviour
     SpriteRenderer myRenderer;
     AudioSource myAudio;
 
+    [SerializeField] private Sprite[] LRSprites;
+    [SerializeField] private Sprite[] JumpSprites;
+    [SerializeField] private Sprite[] IdleSprites;
+
+    [SerializeField] private float animationSpeed = 0.3f;
+    private float timer;
+    private int currentSpriteIndex = 0;
+
     public float speed;
     public float jumpHeight;
     public float gravityMultiplier;
@@ -34,32 +42,42 @@ public class PlayerMove : MonoBehaviour
         exitOnfloor();
         JumpPhysics();
         restart();
-
     }
 
     void checkKey()
     {
+        timer += Time.deltaTime;
+
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("a");
             myRenderer.flipX = true;
+            PlayerAnimation(LRSprites);
             LRMovement(-speed);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             myRenderer.flipX = false;
+            PlayerAnimation(LRSprites);
             LRMovement(speed);
+        }
+        else
+        {
+            PlayerAnimation(IdleSprites);
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && onFloor)
         {
             myRenderer.sprite = jumpSprite;
             myBody.velocity = new Vector3(myBody.velocity.x, jumpHeight);
-            drag = 2f;
+            drag = 2f;      //Jump forward more
+            PlayerAnimation(JumpSprites);
+
         }
         else if (!onFloor)
         {
             myBody.velocity += Vector2.up * Physics2D.gravity.y * (jumpHeight - 1f) * Time.deltaTime;
+            PlayerAnimation(JumpSprites);
         }
         
     }
@@ -77,6 +95,17 @@ public class PlayerMove : MonoBehaviour
         myBody.velocity = new Vector3(direction*drag, myBody.velocity.y);       //leftright movement with drag
     }
 
+    void PlayerAnimation(Sprite[] currentSprite)
+    {
+        timer += Time.deltaTime;
+        if(timer >= animationSpeed)
+        {
+            timer = 0;
+            currentSpriteIndex++;
+            currentSpriteIndex %= currentSprite.Length;
+        }
+        myRenderer.sprite = currentSprite[currentSpriteIndex];
+    }
     void exitOnfloor()
     {
         if (onFloor && myBody.velocity.y > 0.1)

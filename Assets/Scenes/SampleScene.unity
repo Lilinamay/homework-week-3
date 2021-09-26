@@ -1168,6 +1168,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df38d3f0f69544b1d8666b3c2f310f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LRSprites:
+  - {fileID: -2613068298705506101, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  - {fileID: 1652990679379307550, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  JumpSprites:
+  - {fileID: -4233861638212826230, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  - {fileID: -6983579412214840886, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  IdleSprites:
+  - {fileID: -3073422719914899306, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  - {fileID: -5579477810663151800, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  animationSpeed: 0.3
   speed: 3
   jumpHeight: 50
   gravityMultiplier: 65
