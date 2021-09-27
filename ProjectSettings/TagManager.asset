@@ -8,6 +8,7 @@ TagManager:
   - flower
   - ice
   - enemy
+  - restart
   layers:
   - Default
   - TransparentFX

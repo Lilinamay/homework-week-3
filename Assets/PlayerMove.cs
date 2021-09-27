@@ -96,12 +96,14 @@ public class PlayerMove : MonoBehaviour
             myBody.velocity = new Vector3(myBody.velocity.x, jumpHeight);
             drag = 2f;      //Jump forward more
             PlayerAnimation(JumpSprites);
+            Debug.Log("jump");
 
         }
         else if (!onFloor)
         {
             myBody.velocity += Vector2.up * Physics2D.gravity.y * (jumpHeight - 1f) * Time.deltaTime;
             PlayerAnimation(JumpSprites);
+            Debug.Log("jumping");
         }
         
     }
@@ -130,6 +132,7 @@ public class PlayerMove : MonoBehaviour
         }
         myRenderer.sprite = currentSprite[currentSpriteIndex];
     }
+
     void exitOnfloor()
     {
         if (onFloor && myBody.velocity.y > 0.1)
@@ -169,9 +172,16 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             myRenderer.enabled = false;     //invisible to the player AKA dead without losing the camera
+            speed = 0;
+            jumpHeight = 0;
             //gameObject.SetActive(false);
             //Destroy(gameObject);
             Debug.Log("enemy");
+        }
+
+        if(collision.gameObject.tag == "restart")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
 
