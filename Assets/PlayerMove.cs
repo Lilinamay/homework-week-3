@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Sprite[] LRSprites;
     [SerializeField] private Sprite[] JumpSprites;
     [SerializeField] private Sprite[] IdleSprites;
+    [SerializeField] private Sprite[] IceSprites;
 
     [SerializeField] private float animationSpeed = 0.3f;
     private float timer;
@@ -26,6 +27,7 @@ public class PlayerMove : MonoBehaviour
     public Sprite jumpSprite;
     public Sprite slideSprite;
     bool onFloor;
+    bool onIce;
         
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class PlayerMove : MonoBehaviour
         myBody = gameObject.GetComponent<Rigidbody2D>();
         myRenderer = gameObject.GetComponent<SpriteRenderer>();
         myAudio = gameObject.GetComponent<AudioSource>();
+        onIce = false;
     }
 
     // Update is called once per frame
@@ -52,18 +55,39 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("a");
             myRenderer.flipX = true;
+            if (onIce == true)
+            {
+                PlayerAnimation(IceSprites);
+            }
+            else
+            { 
             PlayerAnimation(LRSprites);
+            }
             LRMovement(-speed);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             myRenderer.flipX = false;
-            PlayerAnimation(LRSprites);
+            if (onIce == true)
+            {
+                PlayerAnimation(IceSprites);
+            }
+            else
+            {
+                PlayerAnimation(LRSprites);
+            }
             LRMovement(speed);
         }
         else
         {
-            PlayerAnimation(IdleSprites);
+            if (onIce == true)
+            {
+                PlayerAnimation(IceSprites);
+            }
+            else
+            {
+                PlayerAnimation(IdleSprites);
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && onFloor)
@@ -120,6 +144,7 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.tag == "floor")
         {
             onFloor = true;
+            onIce = false;
             myRenderer.sprite = walkSprite;
             drag = 0.9f;
         }
@@ -129,6 +154,7 @@ public class PlayerMove : MonoBehaviour
             onFloor = true;
             myRenderer.sprite = slideSprite;
             drag = 5f;
+            onIce = true; 
             //myBody.drag = 0.3f;
             //myBody.angularDrag = 0.05f;
         }

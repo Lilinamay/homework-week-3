@@ -303,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306212971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.81, y: 0.65, z: 28.578989}
+  m_LocalPosition: {x: 10.14, y: 0.74, z: 28.578989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1210822256}
@@ -638,7 +638,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.6594353
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -662,7 +662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.01, y: 1.39, z: -10}
+  m_LocalPosition: {x: 1.1, y: 0.22, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1045448609}
@@ -1077,18 +1077,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.049966574, y: -0.28896785}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.98, y: 1.93}
+    oldSize: {x: 1.8, y: 1.5}
     newSize: {x: 0.98, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.98, y: 1.93}
+  m_Size: {x: 1.012176, y: 0.8825009}
   m_EdgeRadius: 0
 --- !u!212 &1045448608
 SpriteRenderer:
@@ -1130,7 +1130,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5542459850171591866, guid: 8a79f5d4700c742cc91eb6a21a57dee5, type: 3}
+  m_Sprite: {fileID: -5108353222546170368, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1169,14 +1169,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LRSprites:
-  - {fileID: -2613068298705506101, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
-  - {fileID: 1652990679379307550, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  - {fileID: -5788157271706466305, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
+  - {fileID: -326100460515558271, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
   JumpSprites:
-  - {fileID: -4233861638212826230, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
-  - {fileID: -6983579412214840886, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  - {fileID: -4399066928721036633, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
+  - {fileID: 4732078989863999927, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
   IdleSprites:
-  - {fileID: -3073422719914899306, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
-  - {fileID: -5579477810663151800, guid: 979295b3c3dc54f82ba5783d156e68cf, type: 3}
+  - {fileID: -5108353222546170368, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
+  - {fileID: 4806414628001767620, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
+  IceSprites:
+  - {fileID: -6338819912937298852, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
+  - {fileID: -2391745744308272411, guid: e0aa62c7f1f20469996e221263c68cea, type: 3}
   animationSpeed: 0.3
   speed: 3
   jumpHeight: 50
@@ -1734,7 +1737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706005468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.53, y: 0.98, z: 2.923146}
+  m_LocalPosition: {x: 8.12, y: 0.89, z: 2.923146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 398255530}
@@ -1842,7 +1845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812638660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.49, y: -3.63, z: 0}
+  m_LocalPosition: {x: -7.49, y: -3.57, z: 0}
   m_LocalScale: {x: 2.8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 77660}
@@ -1924,7 +1927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947836475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.62, y: -3.59, z: 0}
+  m_LocalPosition: {x: -4.62, y: -3.55, z: 0}
   m_LocalScale: {x: 2.8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 77660}
