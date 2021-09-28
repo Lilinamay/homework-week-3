@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -22,12 +23,21 @@ public class PlayerMove : MonoBehaviour
     public float jumpHeight;
     public float gravityMultiplier;
     public float drag;
+    public int flowerCount = 0;
+    public TMP_Text deadText;
+    public TMP_Text flowerText;
+
     public AudioClip flower;
+    public AudioClip enemy;
+    public AudioClip jump;
+
     public Sprite walkSprite;
     public Sprite jumpSprite;
     public Sprite slideSprite;
     bool onFloor;
     bool onIce;
+
+    public static bool faceRight = true;    
         
     // Start is called before the first frame update
     void Start()
@@ -45,6 +55,7 @@ public class PlayerMove : MonoBehaviour
         exitOnfloor();
         JumpPhysics();
         restart();
+        flowerText.text = (flowerCount+" / 15");
     }
 
     void checkKey()
@@ -55,6 +66,7 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("a");
             myRenderer.flipX = true;
+            faceRight = false;
             if (onIce == true)
             {
                 PlayerAnimation(IceSprites);
@@ -68,6 +80,7 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
         {
             myRenderer.flipX = false;
+            faceRight = true;
             if (onIce == true)
             {
                 PlayerAnimation(IceSprites);
@@ -97,7 +110,7 @@ public class PlayerMove : MonoBehaviour
             drag = 2f;      //Jump forward more
             PlayerAnimation(JumpSprites);
             Debug.Log("jump");
-
+            AudioSource.PlayClipAtPoint(jump, transform.position);
         }
         else if (!onFloor)
         {
@@ -167,6 +180,7 @@ public class PlayerMove : MonoBehaviour
             Destroy(collision.gameObject);
             AudioSource.PlayClipAtPoint (flower, transform.position);
             Debug.Log("flower");
+            flowerCount++;
         }
 
         if (collision.gameObject.tag == "enemy")
@@ -174,9 +188,11 @@ public class PlayerMove : MonoBehaviour
             myRenderer.enabled = false;     //invisible to the player AKA dead without losing the camera
             speed = 0;
             jumpHeight = 0;
+            AudioSource.PlayClipAtPoint(enemy, transform.position);
             //gameObject.SetActive(false);
             //Destroy(gameObject);
             Debug.Log("enemy");
+            deadText.text = ("Press P to Restart");
         }
 
         if(collision.gameObject.tag == "restart")
